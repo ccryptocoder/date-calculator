@@ -1,28 +1,30 @@
 .timer {
     display: grid;
-    grid-template-columns: repeat(4, 177px);
-    column-gap: 20px;
+    grid-template-columns: repeat(4, clamp(60px, 18vw, 177px));
+    column-gap: clamp(14px, 2vw, 20px);
+    place-content: center;
+    --item-br: clamp(12px, 3.5vw, 30px);
     &-item {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border-radius: 30px;
-        min-height: 205px;
+        border-radius: var(--item-br);
+        min-height: clamp(110px, 18vw, 205px);
         box-shadow: 6px 4px 30px var(--clr-opaque-200);
         background-color: var(--clr-opaque-100);
         &-head {
             height: 100%;
             font-weight: 500;
-            font-size: 64px;
-            line-height: 77px;
+            font-size: clamp(34px, 6vw, 64px);
+            line-height: 1.2em;
             color: var(--clr-primary-100);
             font-family: var(--ff-200);
         }
         &-body {
-            padding: 14px;
-            border-radius: 0 0 30px 30px;
+            padding: clamp(8px, 1.5vw, 14px);
+            border-radius: 0 0 var(--item-br) var(--item-br);
             font-weight: 500;
-            font-size: 24px;
+            font-size: clamp(14px,4vw,24px); //18px, 2vw, 24px
             line-height: 1.2em;
             color: var(--clr-accent-100);
             font-family: var(--ff-100);
