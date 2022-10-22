@@ -1,0 +1,23 @@
+// container
+.container {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: var(--ff-100);
+    color: var(--clr-primary-100);
+    text-align: center;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 1.16em;
+}
+
+.subtitle {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2em;
+}

@@ -1,0 +1,37 @@
+.timer {
+    display: grid;
+    grid-template-columns: repeat(4, 177px);
+    column-gap: 20px;
+    &-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 30px;
+        min-height: 205px;
+        box-shadow: 6px 4px 30px var(--clr-opaque-200);
+        background-color: var(--clr-opaque-100);
+        &-head {
+            height: 100%;
+            font-weight: 500;
+            font-size: 64px;
+            line-height: 77px;
+            color: var(--clr-primary-100);
+            font-family: var(--ff-200);
+        }
+        &-body {
+            padding: 14px;
+            border-radius: 0 0 30px 30px;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1.2em;
+            color: var(--clr-accent-100);
+            font-family: var(--ff-100);
+            background-color: var(--clr-primary-100);
+        }
+        &-head, &-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
