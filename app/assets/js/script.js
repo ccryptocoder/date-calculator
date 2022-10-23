@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const currentMonth = currentDate.getMonth() + 1 < 10 ? '0' + Number(currentDate.getMonth() + 1) : Number(currentDate.getMonth() + 1);  
         const currentDay = currentDate.getDate() < 10 ? '0' + currentDate.getDate() : currentDate.getDate();  
     
-        dateInput.value = `${currentYear}-${currentMonth}-${currentDay}`;
+        dateInput.value = `${currentYear}-${currentMonth}-${currentDay + 1}`;
         dateInput.min = `${currentYear}-${currentMonth}-${currentDay + 1}`;
     }
 
@@ -55,14 +55,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // get remaining time
     function getRemainingTime(deadline) {
+        const timezoneOffset = currentDate.getTimezoneOffset();
         const t = Date.parse(deadline) - Date.parse(new Date()); // get difference in ms
         let days, hours, minutes, seconds;
 
         if (t > 0) {
+            let minutesOffset;
+            if (Math.abs(timezoneOffset) % 60 == 30) {
+                minutesOffset = Math.abs(timezoneOffset) % 60;
+            } else if (Math.abs(timezoneOffset) % 60 == 45) {
+                minutesOffset = 15;
+            } else if (Math.abs(timezoneOffset) % 60 == 15) {
+                minutesOffset = 15;
+            } else {
+                minutesOffset = 0;
+            }
             days = Math.floor(t / (1000 * 60 * 60 * 24));
-            hours = Math.floor(t / (1000 * 60 * 60) % 24);
-            minutes = Math.floor(t / (1000 * 60) % 60);
+            hours = Math.floor( (t / (1000 * 60 * 60) + timezoneOffset / 60) % 24);
+            minutes = Math.floor( (t / (1000 * 60) + minutesOffset) % 60 );
             seconds = Math.floor(t / 1000 % 60);
+
+            if (Math.abs(timezoneOffset) >= 720) {
+                days = days - 1;
+            }
         } else {
             days = 0;
             hours = 0;
