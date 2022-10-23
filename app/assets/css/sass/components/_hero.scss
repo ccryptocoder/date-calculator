@@ -25,6 +25,15 @@
     &-timer {
         margin-top: 40px;
     }
+    &-reset {
+        margin-top: 15px;
+        opacity: .4;
+        text-decoration: underline;
+        transition: all .3s;
+        &:hover {
+            opacity: 1;
+        }
+    }
     &-form {
         background: var(--clr-opaque-100);
         border-radius: 15px;
