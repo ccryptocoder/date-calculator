@@ -41,10 +41,19 @@ window.addEventListener('DOMContentLoaded', () => {
     // get remaining time
     function getRemainingTime(deadline) {
         const t = Date.parse(deadline) - Date.parse(new Date()); // get difference in ms
-        const days = Math.floor(t / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(t / (1000 * 60 * 60) % 24);
-        const minutes = Math.floor(t / (1000 * 60) % 60);
-        const seconds = Math.floor(t / 1000 % 60);
+        let days, hours, minutes, seconds;
+
+        if (t > 0) {
+            days = Math.floor(t / (1000 * 60 * 60 * 24));
+            hours = Math.floor(t / (1000 * 60 * 60) % 24);
+            minutes = Math.floor(t / (1000 * 60) % 60);
+            seconds = Math.floor(t / 1000 % 60);
+        } else {
+            days = 0;
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+        }
         
         return {
             'total': t,
@@ -76,6 +85,10 @@ window.addEventListener('DOMContentLoaded', () => {
             if (t.total <= 0) {
                 clearInterval(timeInterval);
             }
+
+            form.addEventListener('submit', () => {
+                clearInterval(timeInterval);
+            })
         }
     }
 
