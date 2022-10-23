@@ -1,6 +1,6 @@
 'use strict';
 
-// window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('[data-form]');
     const dateInput = form.querySelector('[type=date]');
 
@@ -31,29 +31,20 @@
 
     setDefault();
 
-    // get end date 
-    let deadline;
+    // get end date
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        deadline = dateInput.value;
+        const deadline = dateInput.value;
         setTimer(deadline);
     });
 
     // get remaining time
     function getRemainingTime(deadline) {
         const t = Date.parse(deadline) - Date.parse(new Date()); // get difference in ms
-        let days, hours, minutes, seconds;
-        if (t > 0) {
-            days = Math.floor(t / (1000 * 60 * 60 * 24));
-            hours = Math.floor(t / (1000 * 60 * 60) % 24);
-            minutes = Math.floor(t / (1000 * 60) % 60);
-            seconds = Math.floor(t / 1000 % 60);
-        }else {
-            days = 0;
-            hours = 0;
-            minutes = 0;
-            seconds = 0;
-        }
+        const days = Math.floor(t / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(t / (1000 * 60 * 60) % 24);
+        const minutes = Math.floor(t / (1000 * 60) % 60);
+        const seconds = Math.floor(t / 1000 % 60);
         
         return {
             'total': t,
@@ -64,14 +55,16 @@
         }
     }
 
+    const days = document.querySelector('[data-timer-days]');
+    const hours = document.querySelector('[data-timer-hours]');
+    const minutes = document.querySelector('[data-timer-minutes]');
+    const seconds = document.querySelector('[data-timer-seconds]');
+    
     function setTimer(deadline) {
-        const days = document.querySelector('[data-timer-days]');
-        const hours = document.querySelector('[data-timer-hours]');
-        const minutes = document.querySelector('[data-timer-minutes]');
-        const seconds = document.querySelector('[data-timer-seconds]');
-        const timeInterval = setInterval(updateTimer, 1000);
 
         updateTimer();
+
+        const timeInterval = setInterval(updateTimer, 1000);
 
         function updateTimer() {
             const t = getRemainingTime(deadline);
@@ -87,4 +80,4 @@
     }
 
 
-// })
+})
