@@ -31,10 +31,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
     setDefault();
 
+    const previousInput = localStorage.getItem('deadline');
+
+    if (previousInput) {
+        setTimer(previousInput);
+        dateInput.value = previousInput;
+    }
+
     // get end date
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const deadline = dateInput.value;
+        localStorage.setItem('deadline', deadline);
         setTimer(deadline);
     });
 
@@ -64,13 +72,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const days = document.querySelector('[data-timer-days]');
-    const hours = document.querySelector('[data-timer-hours]');
-    const minutes = document.querySelector('[data-timer-minutes]');
-    const seconds = document.querySelector('[data-timer-seconds]');
     
     function setTimer(deadline) {
-
+        const days = document.querySelector('[data-timer-days]');
+        const hours = document.querySelector('[data-timer-hours]');
+        const minutes = document.querySelector('[data-timer-minutes]');
+        const seconds = document.querySelector('[data-timer-seconds]');
         updateTimer();
 
         const timeInterval = setInterval(updateTimer, 1000);
@@ -86,6 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 clearInterval(timeInterval);
             }
 
+            // reset timer on new submit
             form.addEventListener('submit', () => {
                 clearInterval(timeInterval);
             })
