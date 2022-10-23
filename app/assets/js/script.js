@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
             minutes = Math.floor( (t / (1000 * 60) + minutesOffset) % 60 );
             seconds = Math.floor(t / 1000 % 60);
 
-            if (Math.abs(timezoneOffset) >= 720) {
+            if (timezoneOffset <= -720) {
                 days = days - 1;
             }
         } else {
