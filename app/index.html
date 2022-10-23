@@ -18,12 +18,12 @@
 <div class="hero">
     <div class="container hero-wrap">
         <h1 class="title">How many days until...</h1>
-        <div class="hero-text hero-text--mt100">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="hero-text hero-text--mt100 hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         <div class="timer hero-timer">
 
             <div class="timer-item">
                 <div class="timer-item-head">
-                    <span data-timer-days>02</span>
+                    <span data-timer-days>00</span>
                 </div>
                 <div class="timer-item-body">
                     <span>days</span>
@@ -32,7 +32,7 @@
 
             <div class="timer-item">
                 <div class="timer-item-head">
-                    <span data-timer-hours>08</span>
+                    <span data-timer-hours>00</span>
                 </div>
                 <div class="timer-item-body">
                     <span>hours</span>
@@ -41,7 +41,7 @@
 
             <div class="timer-item">
                 <div class="timer-item-head">
-                    <span data-timer-minutes>48</span>
+                    <span data-timer-minutes>00</span>
                 </div>
                 <div class="timer-item-body">
                     <span>minutes</span>
@@ -50,7 +50,7 @@
 
             <div class="timer-item">
                 <div class="timer-item-head">
-                    <span data-timer-seconds>24</span>
+                    <span data-timer-seconds>00</span>
                 </div>
                 <div class="timer-item-body">
                     <span>seconds</span>
@@ -58,12 +58,13 @@
             </div>
         </div>
         <div class="hero-text hero-text--mt200">Input a date in the future</div>
-        <form class="hero-form">
+        <form class="hero-form" data-form>
             <input type="date" name="date">
             <input type="submit" value="calculate">
         </form>
     </div>
 </div>
     
+<script src="assets/js/script.js"></script>
 </body>
 </html>

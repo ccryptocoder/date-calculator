@@ -11,10 +11,15 @@
     font-family: var(--ff-100);
     color: var(--clr-primary-100);
     text-align: center;
-}
-
-.title {
     font-weight: 700;
     font-size: clamp(32px, 5vw, 54px);
     line-height: 1.16em;
+}
+
+.hidden {
+    display: none !important;
+}
+
+body {
+    min-width: 320px;
 }
