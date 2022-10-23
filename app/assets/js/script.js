@@ -3,6 +3,13 @@
 window.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('[data-form]');
     const dateInput = form.querySelector('[type=date]');
+    const resetBtn = document.querySelector('[data-reset-date]');
+
+    resetBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.reload();
+    })
 
     function addEventListeners(events, element, callback) {
         events.forEach(event => {
@@ -26,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const currentDay = currentDate.getDate() < 10 ? '0' + currentDate.getDate() : currentDate.getDate();  
     
         dateInput.value = `${currentYear}-${currentMonth}-${currentDay}`;
-        dateInput.min = `${currentYear}-${currentMonth}-${currentDay}`;
+        dateInput.min = `${currentYear}-${currentMonth}-${currentDay + 1}`;
     }
 
     setDefault();
@@ -99,6 +106,5 @@ window.addEventListener('DOMContentLoaded', () => {
             })
         }
     }
-
 
 })
